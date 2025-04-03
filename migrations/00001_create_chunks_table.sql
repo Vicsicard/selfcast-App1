@@ -8,17 +8,16 @@ CREATE TABLE IF NOT EXISTS chunks (
     question_id TEXT NOT NULL,
     question_text TEXT NOT NULL,
     response_text TEXT NOT NULL,
-    start_time FLOAT NOT NULL,
-    end_time FLOAT NOT NULL,
+    start_time TEXT NOT NULL,
+    end_time TEXT NOT NULL,
     similarity_score FLOAT NOT NULL,
-    vector_embedding vector(1536),  -- OpenAI ada-002 embeddings are 1536 dimensions
+    vector_embedding vector(384),  -- Using sentence-transformers all-MiniLM-L6-v2 (384 dimensions)
     project_id TEXT,               -- Optional project association
     user_id TEXT,                 -- Optional user association
     created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()),
     
-    -- Add indexes for common queries
+    -- Add constraints for data integrity
     CONSTRAINT chunks_chunk_id_unique UNIQUE (chunk_id),
-    CONSTRAINT chunks_times_valid CHECK (end_time > start_time),
     CONSTRAINT chunks_similarity_valid CHECK (similarity_score >= 0 AND similarity_score <= 1)
 );
 
@@ -34,6 +33,6 @@ WITH (lists = 100);  -- Adjust lists based on expected table size
 
 -- Add helpful comments
 COMMENT ON TABLE chunks IS 'Stores transcript chunks with their metadata and vector embeddings';
-COMMENT ON COLUMN chunks.vector_embedding IS 'OpenAI ada-002 embedding vector with 1536 dimensions';
+COMMENT ON COLUMN chunks.vector_embedding IS 'Sentence-transformers all-MiniLM-L6-v2 embedding vector (384 dimensions)';
 COMMENT ON COLUMN chunks.project_id IS 'Optional reference to associated project';
 COMMENT ON COLUMN chunks.user_id IS 'Optional reference to associated user';
