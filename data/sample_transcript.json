@@ -1,0 +1,19 @@
+{
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 15.2,
+      "text": "Something people don't know about me is that I used to be a professional juggler. I performed at children's parties and small events during college to help pay for my education."
+    },
+    {
+      "start": 16.0,
+      "end": 45.5,
+      "text": "A pivotal moment that shaped my path was when I dropped out of medical school to pursue software engineering. It was terrifying at the time, but I realized I was more passionate about building things than practicing medicine. My family thought I was crazy, but it turned out to be the best decision I ever made."
+    },
+    {
+      "start": 46.0,
+      "end": 60.0,
+      "text": "The biggest challenge I've faced was overcoming imposter syndrome in my first tech job. I felt like I didn't belong, but gradually I learned that everyone starts somewhere and it's okay to be a beginner."
+    }
+  ]
+}
