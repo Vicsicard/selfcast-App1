@@ -1,0 +1,144 @@
+[
+  {
+    "id": "NE01",
+    "label": "Clarity Through Experience",
+    "group": "narrative_elevation",
+    "question": "What lived experience or moment helped you realize what really matters in your work—or shifted how you see your place in it?",
+    "tips": "It doesn't need to be dramatic. Sometimes the quietest shifts create the clearest vision.",
+    "tags": [
+      "clarity",
+      "purpose",
+      "shift",
+      "insight"
+    ]
+  },
+  {
+    "id": "NE02",
+    "label": "Message Root",
+    "group": "narrative_elevation",
+    "question": "How did that experience shape the message you feel most called to lead with now?",
+    "tips": "Start with the belief or truth that keeps showing up in your work.",
+    "tags": [
+      "message",
+      "belief",
+      "alignment",
+      "calling"
+    ]
+  },
+  {
+    "id": "NE03",
+    "label": "Human Trust Factor",
+    "group": "narrative_elevation",
+    "question": "How does your personal story help people trust your professional presence?",
+    "tips": "Let your story explain the 'why behind the why.'",
+    "tags": [
+      "trust",
+      "presence",
+      "authenticity",
+      "backstory"
+    ]
+  },
+  {
+    "id": "NE04",
+    "label": "What You're Building",
+    "group": "narrative_elevation",
+    "question": "What are you building—content, business, platform, or community—that requires people to trust your voice?",
+    "tips": "Name what you're inviting people to believe in with you.",
+    "tags": [
+      "trust",
+      "vision",
+      "platform",
+      "invitation"
+    ]
+  },
+  {
+    "id": "NE05",
+    "label": "Hidden Power",
+    "group": "narrative_elevation",
+    "question": "What part of your identity or experience have you been hesitant to share—but might actually be your power?",
+    "tips": "Think about what you downplay, even though it shaped you.",
+    "tags": [
+      "identity",
+      "strength",
+      "authenticity",
+      "self-expression"
+    ]
+  },
+  {
+    "id": "NE06",
+    "label": "Core Themes",
+    "group": "narrative_elevation",
+    "question": "If someone followed your content for six months, what themes or takeaways would you want to be unmistakable?",
+    "tips": "These themes become your pillars—they guide what you talk about and why.",
+    "tags": [
+      "themes",
+      "content pillars",
+      "repetition",
+      "focus"
+    ]
+  },
+  {
+    "id": "NE07",
+    "label": "Action Through Audience",
+    "group": "narrative_elevation",
+    "question": "What audience do you most want to move to action—and what kind of action do you hope your story inspires?",
+    "tips": "Be specific about the shift—not just the demographics.",
+    "tags": [
+      "audience",
+      "impact",
+      "shift",
+      "inspiration"
+    ]
+  },
+  {
+    "id": "NE08",
+    "label": "Voice Alignment",
+    "group": "narrative_elevation",
+    "question": "Where do you feel most 'in your voice'?",
+    "tips": "Your narrative isn't just what you say—it's how you say it best.",
+    "tags": [
+      "voice",
+      "expression",
+      "channel",
+      "authenticity"
+    ]
+  },
+  {
+    "id": "NE09",
+    "label": "Narrative Let-Go",
+    "group": "narrative_elevation",
+    "question": "What narrative are you ready to leave behind so you can step into one that feels more true?",
+    "tips": "This might be about image, tone, content—or permission.",
+    "tags": [
+      "narrative",
+      "evolution",
+      "truth",
+      "transition"
+    ]
+  },
+  {
+    "id": "NE10",
+    "label": "Aligned Presence",
+    "group": "narrative_elevation",
+    "question": "If someone described your presence when you're fully aligned, what would they say?",
+    "tips": "Ask yourself, 'What do I hope they remember or feel after experiencing my work?'",
+    "tags": [
+      "alignment",
+      "presence",
+      "traits",
+      "storytelling"
+    ]
+  },
+  {
+    "id": "NE11",
+    "label": "Final Insight",
+    "group": "narrative_elevation",
+    "question": "Is there anything I haven't asked that you wish I had—or anything you'd like to add?",
+    "tips": "Sometimes the most important insight is the one that's been sitting quietly in the background.",
+    "tags": [
+      "insight",
+      "open-ended",
+      "self-guided"
+    ]
+  }
+]

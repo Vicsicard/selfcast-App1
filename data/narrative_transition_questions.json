@@ -1,0 +1,144 @@
+[
+  {
+    "id": "NT01",
+    "label": "Moment of Change",
+    "group": "narrative_transition",
+    "question": "What moment or shift made you realize it was time for change?",
+    "tips": "This could be a quiet knowing or a major turning point.",
+    "tags": [
+      "transition",
+      "realization",
+      "change",
+      "life shift"
+    ]
+  },
+  {
+    "id": "NT02",
+    "label": "Truth Through Transition",
+    "group": "narrative_transition",
+    "question": "What truth or value became clearer during that transition?",
+    "tips": "This is often the insight that shifts how you move forward.",
+    "tags": [
+      "truth",
+      "values",
+      "clarity",
+      "insight"
+    ]
+  },
+  {
+    "id": "NT03",
+    "label": "New Identity",
+    "group": "narrative_transition",
+    "question": "What do you want to be known for now?",
+    "tips": "Think beyond roles. Focus on identity, contribution, and message.",
+    "tags": [
+      "identity",
+      "reputation",
+      "shift",
+      "vision"
+    ]
+  },
+  {
+    "id": "NT04",
+    "label": "Past Preparedness",
+    "group": "narrative_transition",
+    "question": "How has your past uniquely prepared you for this next chapter?",
+    "tips": "This is where your story builds trust.",
+    "tags": [
+      "experience",
+      "wisdom",
+      "foundation",
+      "story"
+    ]
+  },
+  {
+    "id": "NT05",
+    "label": "Narrative Let-Go",
+    "group": "narrative_transition",
+    "question": "What narrative do you need to let go of?",
+    "tips": "This could be about image, tone, expectations, or permission.",
+    "tags": [
+      "narrative",
+      "identity",
+      "freedom",
+      "transition"
+    ]
+  },
+  {
+    "id": "NT06",
+    "label": "Bold Insight",
+    "group": "narrative_transition",
+    "question": "What message or insight are you ready to share more boldly?",
+    "tips": "It doesn't need to be polished—it just needs to be true.",
+    "tags": [
+      "message",
+      "boldness",
+      "truth",
+      "clarity"
+    ]
+  },
+  {
+    "id": "NT07",
+    "label": "Audience Alignment",
+    "group": "narrative_transition",
+    "question": "Who do you hope your story supports or inspires?",
+    "tips": "Be clear on your audience and your invitation to them.",
+    "tags": [
+      "audience",
+      "impact",
+      "inspiration",
+      "support"
+    ]
+  },
+  {
+    "id": "NT08",
+    "label": "Presence",
+    "group": "narrative_transition",
+    "question": "What kind of presence do you want to cultivate now?",
+    "tips": "Think tone, energy, clarity—not just words.",
+    "tags": [
+      "presence",
+      "energy",
+      "expression",
+      "alignment"
+    ]
+  },
+  {
+    "id": "NT09",
+    "label": "Preferred Medium",
+    "group": "narrative_transition",
+    "question": "What medium feels most natural for you to express your voice?",
+    "tips": "Your narrative is not just what you say—it's how you say it.",
+    "tags": [
+      "voice",
+      "medium",
+      "expression",
+      "style"
+    ]
+  },
+  {
+    "id": "NT10",
+    "label": "Next Chapter Legacy",
+    "group": "narrative_transition",
+    "question": "What kind of legacy do you want this next chapter to build?",
+    "tips": "Think about contribution, not just career.",
+    "tags": [
+      "legacy",
+      "impact",
+      "purpose",
+      "vision"
+    ]
+  },
+  {
+    "id": "NT11",
+    "label": "Final Thought",
+    "group": "narrative_transition",
+    "question": "Is there anything I haven't asked that you wish I had—or anything you'd like to add?",
+    "tips": "Sometimes the most important insight is the one that's been sitting quietly in the background.",
+    "tags": [
+      "open-ended",
+      "reflection",
+      "final word"
+    ]
+  }
+]

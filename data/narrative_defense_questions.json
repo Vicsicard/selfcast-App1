@@ -1,0 +1,80 @@
+[
+  {
+    "id": "ND01",
+    "label": "Audience Clarification",
+    "group": "narrative_defense",
+    "question": "Who do you most want to reach, clarify things for, or reconnect with through your story?",
+    "tips": "Think about people whose opinions carry weight—or whose understanding of you has changed. This could be public, personal, or professional.",
+    "tags": [
+      "audience",
+      "connection",
+      "reputation",
+      "reframing"
+    ]
+  },
+  {
+    "id": "ND02",
+    "label": "Clarifying Misunderstandings",
+    "group": "narrative_defense",
+    "question": "What do you think people are struggling to understand about your story—or about you—that your voice could help clarify?",
+    "tips": "This isn't about proving anything. It's about offering clarity so others can make a more human, informed judgment.",
+    "tags": [
+      "misunderstanding",
+      "voice",
+      "truth",
+      "context"
+    ]
+  },
+  {
+    "id": "ND03",
+    "label": "Private Truths",
+    "group": "narrative_defense",
+    "question": "What's something you know is true about yourself—even if it hasn't been visible to others?",
+    "tips": "This might be a strength that's been overlooked, a principle you live by, or a way you've quietly grown.",
+    "tags": [
+      "truth",
+      "self-awareness",
+      "strength",
+      "resilience"
+    ]
+  },
+  {
+    "id": "ND04",
+    "label": "Public Silence",
+    "group": "narrative_defense",
+    "question": "What haven't you said publicly that might bring healing, truth, or context to your story?",
+    "tips": "This could be a part of your story you've avoided out of fear or strategy—and now might be the time to name it.",
+    "tags": [
+      "silence",
+      "healing",
+      "disclosure",
+      "vulnerability"
+    ]
+  },
+  {
+    "id": "ND05",
+    "label": "Character Anchors",
+    "group": "narrative_defense",
+    "question": "What traits, values, or choices would you want people to remember you for?",
+    "tips": "This is about your integrity. What threads do you want to pull forward through your story?",
+    "tags": [
+      "character",
+      "values",
+      "legacy",
+      "integrity"
+    ]
+  },
+  {
+    "id": "ND06",
+    "label": "Why Now",
+    "group": "narrative_defense",
+    "question": "Why is it important to shape your story now—rather than let others define it for you?",
+    "tips": "This is your timing moment. Clarify your sense of urgency or agency.",
+    "tags": [
+      "timing",
+      "agency",
+      "ownership",
+      "narrative control"
+    ]
+  }
+]

@@ -1,0 +1,249 @@
+[
+  {
+    "id": "Q01",
+    "label": "Unspoken Truth",
+    "group": "core",
+    "question": "What's something you believe or feel that most people don't know about you—or would be surprised to hear?",
+    "tips": "This is a personal insight, often an unspoken truth or belief you rarely share.",
+    "tags": [
+      "authenticity",
+      "vulnerability",
+      "self-revelation"
+    ]
+  },
+  {
+    "id": "Q02",
+    "label": "Pivotal Moment",
+    "group": "core",
+    "question": "What's a pivotal moment that shaped the path you're on today?",
+    "tips": "This should be a turning point—big or small—that changed your trajectory.",
+    "tags": [
+      "transformation",
+      "origin",
+      "personal journey"
+    ]
+  },
+  {
+    "id": "Q03",
+    "label": "Early Influences",
+    "group": "core",
+    "question": "What early experiences or influences shaped how you show up in the world today?",
+    "tips": "Could be related to family, community, mentors, or moments of challenge.",
+    "tags": [
+      "childhood",
+      "values",
+      "formative experience"
+    ]
+  },
+  {
+    "id": "Q04",
+    "label": "Proud Moment",
+    "group": "core",
+    "question": "What's something you're genuinely proud of—and what does it say about you?",
+    "tips": "Think of this as your 'legacy moment'—something that represents your growth or values.",
+    "tags": [
+      "pride",
+      "legacy",
+      "impact",
+      "personal win"
+    ]
+  },
+  {
+    "id": "Q05",
+    "label": "Defining Challenge",
+    "group": "core",
+    "question": "What's a defining challenge you've faced—and how did you move through it?",
+    "tips": "Could be professional or personal. Focus on what it revealed or reshaped in you.",
+    "tags": [
+      "adversity",
+      "resilience",
+      "growth"
+    ]
+  },
+  {
+    "id": "Q06",
+    "label": "Values in Action",
+    "group": "core",
+    "question": "What do you stand for—and how does that show up in your work or choices?",
+    "tips": "Try to connect your personal values to real actions or habits.",
+    "tags": [
+      "values",
+      "ethics",
+      "integrity",
+      "purpose"
+    ]
+  },
+  {
+    "id": "Q07",
+    "label": "Breaking Point",
+    "group": "core",
+    "question": "What's a moment that forced you to make a big decision, change, or reinvention?",
+    "tips": "Think of a 'breaking point'—a hard moment that changed your direction.",
+    "tags": [
+      "decision",
+      "reinvention",
+      "change",
+      "truth"
+    ]
+  },
+  {
+    "id": "Q08",
+    "label": "Hidden Identity",
+    "group": "core",
+    "question": "Is there a part of you that people often miss or misunderstand?",
+    "tips": "This could be a hidden strength, quiet conviction, or misunderstood identity.",
+    "tags": [
+      "identity",
+      "perception",
+      "depth",
+      "self-awareness"
+    ]
+  },
+  {
+    "id": "Q09",
+    "label": "No Longer True",
+    "group": "core",
+    "question": "What's something that used to define you—but no longer does?",
+    "tips": "A belief, label, or phase of your life you've evolved past.",
+    "tags": [
+      "growth",
+      "change",
+      "transformation",
+      "letting go"
+    ]
+  },
+  {
+    "id": "Q10",
+    "label": "External Pressure",
+    "group": "core",
+    "question": "What pressures or expectations have you had to shed or resist to stay aligned with your truth?",
+    "tips": "Could be social, cultural, family-based, or self-imposed.",
+    "tags": [
+      "expectation",
+      "authenticity",
+      "alignment",
+      "resistance"
+    ]
+  },
+  {
+    "id": "Q11",
+    "label": "Mirror Moment",
+    "group": "core",
+    "question": "What's something you see in others that reminds you of yourself?",
+    "tips": "This is a 'mirror moment'—where shared humanity shows up.",
+    "tags": [
+      "empathy",
+      "relatability",
+      "shared story"
+    ]
+  },
+  {
+    "id": "Q12",
+    "label": "Misconception",
+    "group": "core",
+    "question": "What do people often get wrong about you—and what's the truth?",
+    "tips": "Focus on a misconception that's meaningful or important to clear up.",
+    "tags": [
+      "perception",
+      "clarity",
+      "identity correction"
+    ]
+  },
+  {
+    "id": "Q13",
+    "label": "Public vs Private",
+    "group": "core",
+    "question": "What's the difference between who you are publicly—and privately?",
+    "tips": "Where do these parts align or differ? Why?",
+    "tags": [
+      "authenticity",
+      "image",
+      "inner self"
+    ]
+  },
+  {
+    "id": "Q14",
+    "label": "Guiding Belief",
+    "group": "core",
+    "question": "What belief, mantra, or idea do you come back to when things get hard?",
+    "tips": "This is often a phrase or truth that centers you.",
+    "tags": [
+      "resilience",
+      "wisdom",
+      "mindset"
+    ]
+  },
+  {
+    "id": "Q15",
+    "label": "Why Now",
+    "group": "core",
+    "question": "Why is this the right time to share your story—or shift your visibility?",
+    "tips": "This helps uncover urgency, timing, or motivation.",
+    "tags": [
+      "timing",
+      "visibility",
+      "purpose"
+    ]
+  },
+  {
+    "id": "Q16",
+    "label": "Work and Identity",
+    "group": "core",
+    "question": "How does your work reflect who you are—or what you believe in?",
+    "tips": "Link personal values to your public output or profession.",
+    "tags": [
+      "alignment",
+      "expression",
+      "mission"
+    ]
+  },
+  {
+    "id": "Q17",
+    "label": "Transformation",
+    "group": "core",
+    "question": "What have you outgrown—and what are you stepping into now?",
+    "tips": "Describe the old version and the new version of you.",
+    "tags": [
+      "transformation",
+      "growth",
+      "evolution"
+    ]
+  },
+  {
+    "id": "Q18",
+    "label": "What's Enough",
+    "group": "core",
+    "question": "What does 'enough' look like for you—and has that changed over time?",
+    "tips": "Reflect on ambition, rest, contentment, or boundaries.",
+    "tags": [
+      "enoughness",
+      "contentment",
+      "ambition",
+      "boundaries"
+    ]
+  },
+  {
+    "id": "Q19",
+    "label": "Legacy Question",
+    "group": "core",
+    "question": "If someone Googled you 10 years from now—what would you want them to find?",
+    "tips": "Your ideal reputation, story, impact, or legacy.",
+    "tags": [
+      "future",
+      "reputation",
+      "vision"
+    ]
+  },
+  {
+    "id": "Q20",
+    "label": "Last Thought",
+    "group": "core",
+    "question": "Anything else you'd want people to understand about you that we haven't covered?",
+    "tips": "Catch-all for open expression. A truth or insight we didn't ask for but should've.",
+    "tags": [
+      "open-ended",
+      "self-expression",
+      "final note"
+    ]
+  }
+]
