@@ -19,6 +19,8 @@ from utils.chunk_builder import ChunkBuilder
 from utils.file_writer import FileWriter
 from utils.question_loader import load_questions, QuestionLoadError
 from utils.supabase_writer import SupabaseWriter
+from utils.supabase_upload import upload_file_to_supabase
+from utils.video_segmenter import VideoSegmenter
 
 def setup_logger(output_dir: Path):
     """Configure logging to both console and file."""
@@ -144,7 +146,7 @@ def main():
         writer.write_chunk_vectors(chunk_vectors)
         
         # Write to Supabase if environment variables are set
-        if os.getenv("SUPABASE_URL") and os.getenv("SUPABASE_KEY"):
+        if os.getenv("SUPABASE_URL") and os.getenv("SUPABASE_SERVICE_ROLE_KEY"):
             logger.info("Writing to Supabase...")
             supabase_writer = SupabaseWriter(str(output_dir))
             success = supabase_writer.write_chunks(
@@ -155,6 +157,57 @@ def main():
             )
             if success:
                 logger.info("Successfully wrote all chunks to Supabase")
+                
+                # Upload generated files to Supabase storage
+                logger.info("Uploading files to Supabase storage...")
+                try:
+                    # Upload original video
+                    upload_file_to_supabase(
+                        bucket="videos",
+                        user_id=args.user_id,
+                        transcript_id=args.project_id,
+                        file_path=str(input_path),
+                        file_type="video"
+                    )
+                    logger.info("Uploaded original video")
+                    
+                    # Upload transcript markdown
+                    upload_file_to_supabase(
+                        bucket="documents",
+                        user_id=args.user_id,
+                        transcript_id=args.project_id,
+                        file_path=str(output_dir / "transcript.md"),
+                        file_type="transcript"
+                    )
+                    logger.info("Uploaded transcript markdown")
+                    
+                    # Upload metadata JSON
+                    upload_file_to_supabase(
+                        bucket="documents",
+                        user_id=args.user_id,
+                        transcript_id=args.project_id,
+                        file_path=str(output_dir / "metadata.json"),
+                        file_type="metadata"
+                    )
+                    logger.info("Uploaded metadata JSON")
+                    
+                    # Process video segments with automatic upload
+                    logger.info("Processing video segments...")
+                    segmenter = VideoSegmenter(
+                        metadata_path=output_dir / "metadata.json",
+                        user_id=args.user_id,
+                        transcript_id=args.project_id
+                    )
+                    
+                    segmenter.load_metadata()
+                    if segmenter.export_video_segments(input_path, output_dir / "chunks"):
+                        segmenter.create_video_index(output_dir / "video_index.json")
+                    else:
+                        logger.warning("Some video segments failed to export")
+                    
+                    logger.info("Successfully uploaded all files to Supabase storage")
+                except Exception as e:
+                    logger.error(f"Failed to upload files to Supabase storage: {str(e)}")
             else:
                 logger.warning("Some chunks failed to write to Supabase. Check errors.log for details")
         

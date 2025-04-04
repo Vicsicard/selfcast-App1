@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import List, Dict, Union, Tuple, Optional
 from datetime import datetime
 from loguru import logger
+from .supabase_upload import upload_file_to_supabase
 
 @dataclass
 class VideoSegment:
@@ -31,12 +32,14 @@ class VideoSegment:
         }
 
 class VideoSegmenter:
-    def __init__(self, metadata_path: Union[str, Path]):
+    def __init__(self, metadata_path: Union[str, Path], user_id: Optional[str] = None, transcript_id: Optional[str] = None):
         """Initialize the video segmenter with path to chunk metadata."""
         self.metadata_path = Path(metadata_path)
         self.segments: List[VideoSegment] = []
         self.failed_segments: List[Tuple[str, str]] = []  # [(chunk_id, error_msg)]
         self.output_dir: Optional[Path] = None
+        self.user_id = user_id
+        self.transcript_id = transcript_id
 
     def load_metadata(self) -> List[VideoSegment]:
         """Load and parse chunk metadata into video segments."""
@@ -112,9 +115,20 @@ class VideoSegmenter:
                 ffmpeg.run(stream, capture_stdout=True, capture_stderr=True)
                 logger.info(f"Exported segment: {output_path}")
                 
-                # Create empty file for testing
-                if not output_path.exists():
-                    output_path.touch()
+                # Upload to Supabase if credentials are provided
+                if self.user_id and self.transcript_id:
+                    try:
+                        upload_file_to_supabase(
+                            bucket="videos",
+                            user_id=self.user_id,
+                            transcript_id=self.transcript_id,
+                            file_path=str(output_path),
+                            file_type="chunked_video"
+                        )
+                        logger.info(f"Uploaded segment to Supabase: {output_path}")
+                    except Exception as e:
+                        logger.error(f"Failed to upload segment to Supabase: {str(e)}")
+                        # Don't fail the whole process if upload fails
                 
             except ffmpeg.Error as e:
                 error_msg = e.stderr.decode() if hasattr(e, 'stderr') else str(e)
@@ -153,6 +167,20 @@ class VideoSegmenter:
             json.dump(index, f, indent=2)
             
         logger.info(f"Created video index: {output_path}")
+        
+        # Upload index file if credentials are provided
+        if self.user_id and self.transcript_id:
+            try:
+                upload_file_to_supabase(
+                    bucket="documents",
+                    user_id=self.user_id,
+                    transcript_id=self.transcript_id,
+                    file_path=str(output_path),
+                    file_type="video_index"
+                )
+                logger.info("Uploaded video index to Supabase")
+            except Exception as e:
+                logger.error(f"Failed to upload video index to Supabase: {str(e)}")
         
         # Print success message
         if self.output_dir:
