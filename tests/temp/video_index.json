@@ -1,0 +1,23 @@
+[
+  {
+    "chunk_id": "intro_001",
+    "filename": "Q01_intro_001.mp4",
+    "start_time": "00:00:00",
+    "end_time": "00:00:15",
+    "question_id": "01"
+  },
+  {
+    "chunk_id": "pivot_002",
+    "filename": "Q02_pivot_002.mp4",
+    "start_time": "00:00:16",
+    "end_time": "00:00:45",
+    "question_id": "02"
+  },
+  {
+    "chunk_id": "challenge_003",
+    "filename": "Q03_challenge_003.mp4",
+    "start_time": "00:00:46",
+    "end_time": "00:01:00",
+    "question_id": "03"
+  }
+]

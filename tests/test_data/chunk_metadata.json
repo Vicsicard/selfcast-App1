@@ -1,0 +1,22 @@
+{
+  "chunks": [
+    {
+      "chunk_id": "intro_001",
+      "question_id": "01",
+      "start_time": "00:00:00",
+      "end_time": "00:00:15"
+    },
+    {
+      "chunk_id": "pivot_002",
+      "question_id": "02",
+      "start_time": "00:00:16",
+      "end_time": "00:00:45"
+    },
+    {
+      "chunk_id": "challenge_003",
+      "question_id": "03",
+      "start_time": "00:00:46",
+      "end_time": "00:01:00"
+    }
+  ]
+}

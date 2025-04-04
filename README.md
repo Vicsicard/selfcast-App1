@@ -1,111 +1,92 @@
-# Transcript Builder
+# Self Cast Studio App
 
-A Python-based command-line tool that converts video interviews into structured markdown transcripts, with semantic matching and vector storage capabilities.
+A tool for processing interview videos into transcript chunks and video segments.
 
 ## Features
 
-- 🎥 Video to text transcription (using faster-whisper)
-- 🔍 Semantic matching of responses to predefined questions
-- 📊 Vector embeddings generation using sentence-transformers
-- 💾 Vector storage in Supabase
-- 📝 Markdown transcript generation
+- ✅ Video segmentation based on timestamps
+- ✅ Transcript chunking and formatting
+- ✅ Error handling and logging
+- ✅ Video index generation
 
-## Project Structure
-
-```
-transcript-builder/
-├── audio/              # Temporary audio files
-├── data/               # Question banks and sample data
-│   ├── core_workshop_questions.json
-│   ├── narrative_defense_questions.json
-│   └── sample_transcript.json
-├── input/              # Input video files
-├── migrations/         # Database migrations
-├── output/            # Generated transcripts
-├── tests/             # Test files
-└── utils/             # Utility modules
-```
-
-## Prerequisites
+## Requirements
 
 - Python 3.11+
-- FFmpeg (for audio extraction)
-- Supabase account and project
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/transcript-builder.git
-cd transcript-builder
-```
-
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-3. Create a `.env` file with your Supabase credentials:
-```env
-SUPABASE_URL=your_supabase_url
-SUPABASE_PROJECT_ID=your_project_id
-SUPABASE_ANON_KEY=your_anon_key
-```
+- FFmpeg (install via `winget install Gyan.FFmpeg`)
+- Python dependencies (install via `pip install -r requirements.txt`)
 
 ## Usage
 
-1. Place your MP4 interview file in the `input` directory
-
-2. Run the transcript builder:
+### Basic Command
 ```bash
-python transcript_builder.py --mp4 input/your_video.mp4 --category core_workshop
+python process_interview.py interview.mp4 chunk_metadata.json
 ```
 
-Available categories:
-- core_workshop
-- narrative_defense
-- narrative_elevation
-- narrative_transition
-
-## Database Schema
-
-The `chunks` table in Supabase stores:
-- Transcript chunks with timestamps
-- Question matches and similarity scores
-- 384-dimension vector embeddings
-- Project and user metadata
-
-## Testing
-
-Run the test suite:
+### Advanced Options
 ```bash
-python -m pytest tests/
+python process_interview.py interview.mp4 chunk_metadata.json --output-dir output --error-log errors.log
 ```
 
-Key test files:
-- `test_env.py`: Environment variable validation
-- `test_supabase.py`: Supabase connection testing
-- `test_pipeline.py`: End-to-end pipeline testing
+### Input Files
 
-## Development
+1. **Video File** (.mp4 format)
+   - Your interview recording
 
-### Local Development
-
-1. Create a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+2. **Chunk Metadata** (chunk_metadata.json)
+```json
+{
+  "chunks": [
+    {
+      "chunk_id": "intro_001",
+      "question_id": "01",
+      "start_time": "00:00:00",
+      "end_time": "00:00:15"
+    }
+  ]
+}
 ```
 
-2. Install dev dependencies:
-```bash
-pip install -r requirements.txt
+### Output Structure
+
+```
+output/
+├── video_chunks/         # Segmented video files
+│   ├── Q01_intro_001.mp4
+│   ├── Q02_pivot_002.mp4
+│   └── ...
+├── video_index.json     # Chunk to video mappings
+└── errors.log          # Processing errors
 ```
 
-### Adding New Question Categories
+## Features
 
-1. Create a new JSON file in `data/` following the existing format
-2. Update the category validation in `transcript_builder.py`
+### Video Segmentation
+- Automatically creates video segments from timestamps
+- Preserves original video quality using stream copy
+- Skips existing segments to prevent overwrites
+- Generates standardized filenames (Q[question_id]_[chunk_id].mp4)
+
+### Error Handling
+- Continues processing if individual segments fail
+- Logs errors with timestamps and details
+- Excludes failed segments from video index
+- Creates clean error reports
+
+### Video Index
+- JSON-based index of all successful segments
+- Maps chunk IDs to video files
+- Includes timestamps and question IDs
+- Helps track processed content
+
+## Development Status
+
+- [x] Core video segmentation
+- [x] Error handling and logging
+- [x] Video index generation
+- [x] CLI interface
+- [ ] GUI interface (planned)
+- [ ] Batch processing (planned)
+- [ ] Cloud storage integration (planned)
 
 ## Contributing
 
@@ -115,10 +96,4 @@ pip install -r requirements.txt
 
 ## License
 
-MIT License
-
-## Acknowledgments
-
-- [sentence-transformers](https://www.sbert.net/) for embeddings
-- [Supabase](https://supabase.com/) for vector storage
-- [FFmpeg](https://ffmpeg.org/) for audio processing
+MIT License - See LICENSE file for details
