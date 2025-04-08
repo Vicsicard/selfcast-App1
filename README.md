@@ -4,6 +4,7 @@ A tool for processing interview videos into transcript chunks and video segments
 
 ## Features
 
+- ✅ Dual-mode support (VTT and Whisper)
 - ✅ Video segmentation based on timestamps
 - ✅ Transcript chunking and formatting
 - ✅ Error handling and logging
@@ -18,6 +19,8 @@ A tool for processing interview videos into transcript chunks and video segments
 - Python dependencies (install via `pip install -r requirements.txt`)
 - Supabase project with storage enabled
 
+See `DEPENDENCIES.md` for detailed dependency information for each mode.
+
 ## Environment Setup
 
 Create a `.env` file with your Supabase credentials:
@@ -28,14 +31,21 @@ SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 
 ## Usage
 
-### Basic Command
+### VTT Mode
+Use this mode when you have a pre-existing VTT transcript file:
 ```bash
-python transcript_builder.py --mp4 interview.mp4 --category narrative_defense
+python transcript_builder.py --vtt input.vtt --mp4 input.mp4 --category narrative_elevation
+```
+
+### Whisper Mode
+Use this mode to generate transcripts from scratch using Whisper:
+```bash
+python transcript_builder.py --mp4 input.mp4 --category narrative_defense
 ```
 
 ### With Supabase Integration
 ```bash
-python transcript_builder.py --mp4 interview.mp4 --category narrative_defense --project-id your-project-id --user-id your-user-id
+python transcript_builder.py --mp4 input.mp4 --category narrative_defense --project-id your-project-id --user-id your-user-id
 ```
 
 ### Input Files
@@ -43,67 +53,90 @@ python transcript_builder.py --mp4 interview.mp4 --category narrative_defense --
 1. **Video File** (.mp4 format)
    - Your interview recording
 
-2. **Category** (required)
+2. **VTT File** (optional)
+   - WebVTT format transcript with timestamps
+   - Required for VTT mode
+
+3. **Category** (required)
    - One of: narrative_defense, narrative_elevation, narrative_transition
    - Determines which question set to use
 
 ### Output Structure
 
+The tool generates a job-specific output directory with:
+
 ```
 output/
-├── chunks/              # Segmented video files
-│   ├── Q01_chunk_1.mp4
-│   ├── Q02_chunk_2.mp4
-│   └── ...
-├── transcript.md        # Formatted transcript
-├── metadata.json       # Chunk metadata
-├── video_index.json    # Chunk to video mappings
-└── errors.log         # Processing errors
+└── job_20250408_123456/
+    ├── transcript_chunks.md     # Human-readable transcript
+    ├── chunk_metadata.json      # Structured data about chunks
+    └── video_chunks/           # Directory of video segments
+        ├── chunk_001.mp4
+        ├── chunk_002.mp4
+        └── ...
 ```
 
-### Supabase Storage Structure
+#### Sample Output Files
 
+1. **transcript_chunks.md**:
+```markdown
+# Interview Transcript
+
+## Chunk 1 [00:00:15 - 00:01:30]
+**Q:** Tell me about your background in technology.
+
+I started programming when I was twelve...
+
+---
+
+## Chunk 2 [00:01:30 - 00:02:45]
+**Q:** What inspired you to start this company?
+
+The idea came to me when...
 ```
-videos/
-├── {user_id}/
-│   └── {transcript_id}/
-│       ├── original.mp4
-│       ├── Q01_chunk_1.mp4
-│       └── ...
-documents/
-├── {user_id}/
-│   └── {transcript_id}/
-│       ├── transcript.md
-│       ├── metadata.json
-│       └── video_index.json
+
+2. **chunk_metadata.json**:
+```json
+{
+  "chunks": [
+    {
+      "start_time": 15.0,
+      "end_time": 90.0,
+      "text": "I started programming when I was twelve...",
+      "speaker": "interviewee",
+      "question": "Tell me about your background in technology",
+      "question_id": "background_001",
+      "similarity_score": 0.85,
+      "video_path": "video_chunks/chunk_001.mp4"
+    },
+    ...
+  ]
+}
 ```
 
-## Features
+## Future Improvements
 
-### Video Segmentation
-- Automatically creates video segments from timestamps
-- Preserves original video quality using stream copy
-- Skips existing segments to prevent overwrites
-- Generates standardized filenames (Q[question_id]_chunk_[number].mp4)
+### Planned Features
+- [ ] VTT-only mode for non-video interviews
+- [ ] Speaker diarization support
+- [ ] Auto-title generation for chunks
+- [ ] In-app chunk editing panel
 
-### Error Handling
-- Continues processing if individual segments fail
-- Logs errors with timestamps and details
-- Excludes failed segments from video index
-- Creates clean error reports
+### Technical Enhancements
+- [ ] Parallel video processing
+- [ ] Custom chunk merging rules
+- [ ] Enhanced speaker detection
+- [ ] Real-time progress updates
 
-### Video Index
-- JSON-based index of all successful segments
-- Maps chunk IDs to video files
-- Includes timestamps and question IDs
-- Helps track processed content
+### UI/UX Improvements
+- [ ] Web-based chunk editor
+- [ ] Live transcription preview
+- [ ] Batch processing support
+- [ ] Custom output templates
 
-### Supabase Integration
-- Automatic file uploads to Supabase Storage
-- Organized storage structure by user and transcript
-- File metadata tracking in database
-- Row-level security for user data protection
-- Separate buckets for videos and documents
+## Contributing
+
+Contributions are welcome! Please read our contributing guidelines and submit pull requests to our repository.
 
 ## Development Status
 
@@ -114,12 +147,6 @@ documents/
 - [x] Cloud storage integration
 - [ ] GUI interface (planned)
 - [ ] Batch processing (planned)
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
 
 ## License
 

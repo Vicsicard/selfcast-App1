@@ -1,19 +1,10 @@
 """
 Transcript chunk building utilities.
 """
-from dataclasses import dataclass
 from typing import List, Dict, Optional
-from .transcribe import TranscriptSegment
+from loguru import logger
 
-@dataclass
-class TranscriptChunk:
-    chunk_id: str
-    question_id: str
-    start_time: float
-    end_time: float
-    question_text: str
-    response_text: str
-    similarity_score: float
+from .models import TranscriptSegment, TranscriptChunk
 
 class ChunkBuilder:
     def __init__(self):
@@ -26,7 +17,7 @@ class ChunkBuilder:
         question_id: str,
         start_time: float,
         question_text: str,
-        similarity_score: float
+        similarity_score: float = 0.0
     ):
         """Start a new chunk when an interviewer question is matched."""
         if self.current_chunk:
@@ -44,17 +35,45 @@ class ChunkBuilder:
     
     def add_response(self, segment: TranscriptSegment):
         """Add a client response to the current chunk."""
-        if not self.current_chunk or segment.speaker == "Speaker 0":  # Skip interviewer responses
+        if not self.current_chunk or segment.speaker == "interviewer":
             return
             
         if self.current_chunk.response_text:
             self.current_chunk.response_text += "\n\n"
-        self.current_chunk.response_text += f"Speaker {segment.speaker}: {segment.text}"
+        self.current_chunk.response_text += segment.text.strip()
         self.current_chunk.end_time = segment.end
     
-    def finalize_chunks(self) -> List[TranscriptChunk]:
-        """Finalize and return all chunks."""
+    def build_chunks(self, segments: List[TranscriptSegment]) -> List[Dict]:
+        """
+        Build chunks from a list of transcript segments.
+        
+        Args:
+            segments: List of TranscriptSegment objects
+            
+        Returns:
+            List of chunk dictionaries
+        """
+        chunk_id = 1
+        current_question = ""
+        
+        for segment in segments:
+            if segment.speaker == "interviewer":
+                # Start new chunk for interviewer questions
+                current_question = segment.text.strip()
+                self.start_new_chunk(
+                    chunk_id=f"chunk_{chunk_id}",
+                    question_id=f"q{chunk_id}",
+                    start_time=segment.start,
+                    question_text=current_question
+                )
+                chunk_id += 1
+            else:
+                # Add client responses to current chunk
+                self.add_response(segment)
+        
+        # Add final chunk if exists
         if self.current_chunk:
             self.chunks.append(self.current_chunk)
-            self.current_chunk = None
-        return [chunk for chunk in self.chunks if chunk.response_text.strip()]  # Only return chunks with responses
+        
+        # Convert chunks to dictionaries
+        return [chunk.to_dict() for chunk in self.chunks]

@@ -1,23 +1,22 @@
 """
 Transcription utilities using faster-whisper.
 """
-from dataclasses import dataclass
-from typing import List, Tuple
-from faster_whisper import WhisperModel
+from typing import List, Optional, Tuple
 from loguru import logger
 
-@dataclass
-class TranscriptSegment:
-    start: float
-    end: float
-    speaker: str
-    text: str
+from .models import TranscriptSegment
 
 class Transcriber:
     def __init__(self, model_size: str = "base"):
-        self.model = WhisperModel(model_size, device="cpu", compute_type="int8")
+        # Lazy import of Whisper
+        try:
+            from faster_whisper import WhisperModel
+            self.model = WhisperModel(model_size, device="cpu", compute_type="int8")
+        except ImportError:
+            logger.error("faster-whisper not installed. Please install with: pip install faster-whisper")
+            raise
     
-    def transcribe_audio(self, audio_path: str) -> List[TranscriptSegment]:
+    def transcribe(self, audio_path: str) -> List[TranscriptSegment]:
         """
         Transcribe audio file with speaker diarization.
         
@@ -49,11 +48,11 @@ class Transcriber:
                     start=segment.start,
                     end=segment.end,
                     speaker=current_speaker,
-                    text=segment.text.strip()
+                    text=segment.text
                 ))
             
             return transcript_segments
             
         except Exception as e:
-            logger.error(f"Error during transcription: {str(e)}")
-            return []
+            logger.error(f"Transcription failed: {str(e)}")
+            raise
