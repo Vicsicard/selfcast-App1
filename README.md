@@ -12,6 +12,23 @@ A tool for processing interview videos into transcript chunks and video segments
 - ✅ Supabase storage integration
 - ✅ File metadata tracking
 
+## Storage Architecture
+
+### Supabase Storage Buckets
+
+- `videos/`: Stores video files (.mp4)
+- `audio/`: Stores extracted audio files
+- `documents/`: Stores transcripts and metadata files
+
+### Database Tables
+
+- `transcript_files`: Tracks all uploaded files with metadata
+  - user_id: Links files to users
+  - transcript_id: Groups related files
+  - file_type: Tracks file types (video/mp4, text/plain, etc.)
+  - file_name: Original file name
+  - bucket: Storage bucket location
+
 ## Requirements
 
 - Python 3.11+
@@ -28,6 +45,14 @@ Create a `.env` file with your Supabase credentials:
 SUPABASE_URL=your-project-url
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 ```
+
+## Verification Tools
+
+- `verify_uploads.py`: Verifies file uploads and database consistency
+  - Checks storage bucket access
+  - Lists files in each bucket
+  - Verifies database records
+  - Reports file type statistics
 
 ## Usage
 
@@ -113,6 +138,20 @@ The idea came to me when...
   ]
 }
 ```
+
+## Current Status
+
+- ✅ Storage buckets configured and accessible
+- ✅ Database schema implemented
+- ✅ File upload functionality working
+- ✅ Metadata tracking operational
+- ✅ User access controls in place
+
+Last verified: 2025-04-11
+- 90 files in storage
+- 89 database records
+- 89 unique users
+- File types: video/mp4 (83), video (2), text/plain (3), other (1)
 
 ## Future Improvements
 

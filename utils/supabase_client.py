@@ -1,53 +1,48 @@
-"""
-Supabase Client Module
-
-Provides a centralized Supabase client instance for use across the application.
-Uses environment variables for configuration:
-- SUPABASE_URL: Your Supabase project URL
-- SUPABASE_SERVICE_ROLE_KEY: Your Supabase service role key (for server-side operations)
-"""
-
+"""Centralized Supabase client for server-side operations."""
 import os
 from typing import Optional
-from dotenv import load_dotenv
 from supabase import create_client, Client
 from loguru import logger
+from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
-# Get Supabase configuration
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")  # Using service role key for server-side operations
-
-# Initialize Supabase client
-supabase: Optional[Client] = None
+# Global client instance
+_supabase_client: Optional[Client] = None
 
 def get_client() -> Client:
-    """
-    Get the Supabase client instance. Creates a new instance if none exists.
+    """Get or create a Supabase client instance.
     
     Returns:
-        Client: Initialized Supabase client
-        
-    Raises:
-        ValueError: If required environment variables are not set
-    """
-    global supabase
+        Client: Supabase client instance
     
-    if supabase is not None:
-        return supabase
+    Raises:
+        ValueError: If required environment variables are missing
+    """
+    global _supabase_client
+    
+    if _supabase_client is not None:
+        return _supabase_client
         
+    # Get credentials from environment
+    SUPABASE_URL = os.getenv("SUPABASE_URL")
+    SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+    
     if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
         raise ValueError(
-            "Supabase configuration missing. Please set SUPABASE_URL and "
-            "SUPABASE_SERVICE_ROLE_KEY environment variables."
+            "Missing Supabase credentials. Ensure SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are set."
         )
     
     try:
-        supabase = create_client(SUPABASE_URL, SUPABASE_SERVICE_KEY)
+        # Create client with minimal config
+        _supabase_client = create_client(
+            supabase_url=SUPABASE_URL,
+            supabase_key=SUPABASE_SERVICE_KEY
+        )
         logger.info("Supabase client initialized successfully")
-        return supabase
+        return _supabase_client
+        
     except Exception as e:
         logger.error(f"Failed to initialize Supabase client: {str(e)}")
         raise

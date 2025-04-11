@@ -1,109 +1,129 @@
 """
-Video cutting utilities for extracting segments from MP4 files.
+Video cutting utilities with robust error handling.
 """
-import os
-import subprocess
 from pathlib import Path
-from typing import List, Dict, Union
+from typing import List, Dict, Optional, Union
+import subprocess
 from loguru import logger
 
+from .error_handler import ErrorHandler, ErrorType
 from .models import TranscriptSegment
 
 class VideoCutter:
-    def __init__(self, input_path: str, output_dir: str):
-        """Initialize video cutter with input file and output directory."""
-        self.input_path = Path(input_path)
-        self.output_dir = Path(output_dir)
+    """Handles cutting video files into segments with error handling."""
+    
+    def __init__(self, input_path: str, output_dir: str, job_id: str):
+        """Initialize video cutter with error handling.
         
+        Args:
+            input_path: Path to input video file
+            output_dir: Base output directory
+            job_id: Job ID for organizing outputs
+        """
+        self.input_path = Path(input_path)
         if not self.input_path.exists():
             raise FileNotFoundError(f"Input video not found: {input_path}")
             
+        self.output_dir = Path(output_dir) / job_id / "video_chunks"
         self.output_dir.mkdir(parents=True, exist_ok=True)
-    
-    def cut_segment(self, start_time: float, end_time: float, output_path: str) -> bool:
-        """Cut video segment using ffmpeg."""
-        try:
-            # Ensure output directory exists
-            output_dir = Path(output_path).parent
-            output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Initialize error handler
+        self.error_handler = ErrorHandler(Path(output_dir) / job_id)
+        
+    def _format_timecode(self, seconds: float) -> str:
+        """Convert seconds to ffmpeg timecode format (HH:MM:SS.mmm)."""
+        hours = int(seconds // 3600)
+        minutes = int((seconds % 3600) // 60)
+        seconds = seconds % 60
+        return f"{hours:02d}:{minutes:02d}:{seconds:06.3f}"
+        
+    def cut_segment(self, chunk_num: int, start_time: float, end_time: float) -> Optional[str]:
+        """Cut a single video segment using ffmpeg.
+        
+        Args:
+            chunk_num: Chunk number (for output filename)
+            start_time: Start time in seconds
+            end_time: End time in seconds
             
-            # Build ffmpeg command
+        Returns:
+            Path to output video file or None if failed
+        """
+        chunk_id = f"chunk_{chunk_num:03d}"
+        output_path = self.output_dir / f"{chunk_id}.mp4"
+        
+        # Skip if file already exists
+        if output_path.exists():
+            logger.info(f"Skipping existing chunk: {output_path}")
+            return str(output_path)
+            
+        try:
+            # Format timecodes for ffmpeg
+            start_tc = self._format_timecode(start_time)
             duration = end_time - start_time
-            command = [
+            
+            # Construct ffmpeg command
+            cmd = [
                 "ffmpeg",
                 "-i", str(self.input_path),
-                "-ss", str(start_time),
+                "-ss", start_tc,
                 "-t", str(duration),
-                "-c:v", "copy",  # Copy video codec
-                "-c:a", "copy",  # Copy audio codec
-                "-y",  # Overwrite output
+                "-c:v", "libx264",    # Use H.264 codec
+                "-preset", "fast",     # Fast encoding
+                "-c:a", "aac",        # AAC audio codec
+                "-y",                  # Overwrite output
                 str(output_path)
             ]
             
             # Run ffmpeg
-            logger.info(f"Cutting segment [{start_time:.2f} - {end_time:.2f}] to {output_path}")
-            result = subprocess.run(
-                command,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True
-            )
+            logger.info(f"Cutting {chunk_id}: {start_tc} to {self._format_timecode(end_time)}")
+            result = subprocess.run(cmd, capture_output=True, text=True)
             
             if result.returncode != 0:
-                logger.error(f"ffmpeg failed: {result.stderr}")
-                return False
+                raise RuntimeError(f"ffmpeg failed: {result.stderr}")
                 
-            return True
+            return str(output_path)
             
         except Exception as e:
-            logger.error(f"Failed to cut segment: {str(e)}")
-            return False
-    
-    def _get_chunk_timing(self, chunk: Union[Dict, TranscriptSegment]) -> tuple[float, float]:
-        """Extract start and end times from chunk, handling different types."""
-        if isinstance(chunk, TranscriptSegment):
-            return chunk.start, chunk.end
-        else:
-            # Try different field names for compatibility
-            start_time = chunk.get("start_time") or chunk.get("start", 0.0)
-            end_time = chunk.get("end_time") or chunk.get("end", 0.0)
-            return start_time, end_time
-    
-    def process_chunks(self, chunks: List[Union[Dict, TranscriptSegment]]) -> List[Dict]:
-        """Process a list of transcript chunks, cutting video segments for each."""
+            self.error_handler.log_video_error(
+                f"Failed to cut segment: {str(e)}",
+                chunk_id
+            )
+            return None
+            
+    def process_chunks(self, segments: List[Union[Dict, TranscriptSegment]]) -> List[Dict]:
+        """Process all chunks from the provided segments.
+        
+        Args:
+            segments: List of segment dictionaries or TranscriptSegment objects
+            
+        Returns:
+            List of processed chunks with video paths added
+        """
         processed_chunks = []
+        failed_chunks = []
         
-        for i, chunk in enumerate(chunks, 1):
-            # Get timing info
-            start_time, end_time = self._get_chunk_timing(chunk)
-            
-            # Generate output path
-            output_path = self.output_dir / f"chunk_{i:03d}.mp4"
-            
-            # Cut video segment
-            success = self.cut_segment(start_time, end_time, str(output_path))
-            
-            if success:
-                # Convert chunk to dict if it's a TranscriptSegment
-                if isinstance(chunk, TranscriptSegment):
-                    chunk_data = {
-                        "start_time": chunk.start,
-                        "end_time": chunk.end,
-                        "text": chunk.text,
-                        "speaker": chunk.speaker,
-                        "video_path": str(output_path)
-                    }
-                else:
-                    # Make a copy of the dict
-                    chunk_data = dict(chunk)
-                    chunk_data.update({
-                        "start_time": start_time,
-                        "end_time": end_time,
-                        "video_path": str(output_path)
-                    })
+        for i, segment in enumerate(segments, 1):
+            try:
+                chunk = segment.to_dict() if isinstance(segment, TranscriptSegment) else segment.copy()
+                video_path = self.cut_segment(i, chunk["start"], chunk["end"])
                 
-                processed_chunks.append(chunk_data)
-            else:
-                logger.error(f"Failed to process chunk {i}")
-        
+                if video_path:
+                    chunk["video_path"] = video_path
+                    processed_chunks.append(chunk)
+                else:
+                    failed_chunks.append(i)
+                    
+            except Exception as e:
+                self.error_handler.log_video_error(
+                    f"Failed to process chunk: {str(e)}",
+                    f"chunk_{i:03d}"
+                )
+                failed_chunks.append(i)
+                continue
+                
+        if failed_chunks:
+            self.error_handler.log_video_error(
+                f"Failed to process {len(failed_chunks)} chunks: {failed_chunks}"
+            )
+            
         return processed_chunks

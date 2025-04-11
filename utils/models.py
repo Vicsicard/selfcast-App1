@@ -3,6 +3,7 @@ Shared data models for transcript processing.
 """
 from dataclasses import dataclass
 from typing import List, Dict, Optional
+import copy
 
 @dataclass
 class TranscriptSegment:
@@ -11,6 +12,31 @@ class TranscriptSegment:
     end: float
     speaker: str
     text: str
+    
+    def get(self, key: str, default=None):
+        """Dictionary-like get method for compatibility."""
+        if key == "start":
+            return self.start
+        elif key == "end":
+            return self.end
+        elif key == "speaker":
+            return self.speaker
+        elif key == "text":
+            return self.text
+        return default
+    
+    def copy(self):
+        """Create a deep copy of the segment."""
+        return copy.deepcopy(self)
+    
+    def to_dict(self) -> Dict:
+        """Convert segment to dictionary format."""
+        return {
+            "start": self.start,
+            "end": self.end,
+            "speaker": self.speaker,
+            "text": self.text
+        }
 
 @dataclass
 class TranscriptChunk:
