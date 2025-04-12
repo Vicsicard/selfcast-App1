@@ -6,7 +6,7 @@ from pathlib import Path
 import subprocess
 from loguru import logger
 
-def extract_audio(input_path: Path, output_dir: Path) -> Path:
+def extract_audio(input_path: str, output_dir: str) -> str:
     """Extract audio from video file using FFmpeg.
     
     Args:
@@ -17,8 +17,11 @@ def extract_audio(input_path: Path, output_dir: Path) -> Path:
         Path to extracted audio file
     """
     try:
-        # Create output directory if it doesn't exist
+        # Convert paths to Path objects
+        input_path = Path(input_path)
         output_dir = Path(output_dir)
+        
+        # Create output directory if it doesn't exist
         output_dir.mkdir(parents=True, exist_ok=True)
         
         # Set output path
@@ -48,7 +51,7 @@ def extract_audio(input_path: Path, output_dir: Path) -> Path:
             logger.error(f"FFmpeg error: {result.stderr}")
             raise RuntimeError(f"Audio extraction failed: {result.stderr}")
             
-        return output_path
+        return str(output_path)
         
     except Exception as e:
         logger.error(f"Failed to extract audio: {str(e)}")
