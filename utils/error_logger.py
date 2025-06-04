@@ -4,7 +4,10 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 import traceback
-from supabase import create_client, Client
+import json
+
+# Import MongoDB client only when needed to avoid circular imports
+# The function that needs MongoDB will import it locally
 
 def setup_error_logger(app_name: str) -> logging.Logger:
     """Set up a logger for the specified app that writes to both file and console."""
@@ -42,20 +45,18 @@ def log_error_to_workflow(
     error: Exception,
     app_name: str,
     job_id: Optional[str] = None,
-    supabase_url: Optional[str] = None,
-    supabase_key: Optional[str] = None
+    mongodb_uri: Optional[str] = None,
+    mongodb_db: Optional[str] = None
 ) -> None:
-    """Log error to Supabase workflow_logs table."""
+    """Log error to MongoDB workflow_logs collection."""
     try:
-        if not (supabase_url and supabase_key):
-            supabase_url = os.getenv("SUPABASE_URL")
-            supabase_key = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
-            
-        if not (supabase_url and supabase_key):
-            raise ValueError("Supabase credentials not found")
-            
-        supabase: Client = create_client(supabase_url, supabase_key)
+        # Import here to avoid circular imports
+        from .mongodb_client import get_mongodb_client
         
+        # Get MongoDB client
+        mongodb = get_mongodb_client()
+        
+        # Create error data
         error_data = {
             "app_name": app_name,
             "status": "error",
@@ -67,10 +68,11 @@ def log_error_to_workflow(
         if job_id:
             error_data["job_id"] = job_id
             
-        supabase.table("workflow_logs").insert(error_data).execute()
+        # Insert into workflow_logs collection
+        mongodb.client[mongodb.db_name]["workflow_logs"].insert_one(error_data)
         
     except Exception as e:
-        # If we can't log to Supabase, at least log to file
+        # If we can't log to MongoDB, at least log to file
         logger = setup_error_logger("workflow_logger")
         logger.error(f"Failed to log error to workflow_logs: {str(e)}")
 

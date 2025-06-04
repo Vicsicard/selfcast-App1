@@ -481,3 +481,462 @@ TypeError: 'TranscriptSegment' object is not subscriptable
 
 2025-04-11 14:07:08,044 | workflow_logger | ERROR | Failed to log error to workflow_logs: Client.__init__() got an unexpected keyword argument 'proxy'
 2025-04-11 14:07:08,044 | workflow_logger | ERROR | Failed to log error to workflow_logs: Client.__init__() got an unexpected keyword argument 'proxy'
+2025-04-11 20:19:51,114 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-04-11 20:19:51,601 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 08:38:52,812 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-04-12 08:38:53,479 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 08:44:56,464 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: VTT processing failed: 'TranscriptSegment' object is not subscriptable
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 77, in process_vtt_mode
+    processed_chunks = [{'id': f'chunk_{i+1:03d}', 'text': s['text'], 'start': s['start'], 'end': s['end']}
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 77, in <listcomp>
+    processed_chunks = [{'id': f'chunk_{i+1:03d}', 'text': s['text'], 'start': s['start'], 'end': s['end']}
+TypeError: 'TranscriptSegment' object is not subscriptable
+
+2025-04-12 08:44:56,885 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 08:44:56,887 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: 'TranscriptSegment' object is not subscriptable
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 332, in main
+    chunks = process_vtt_mode(str(mp4_path) if mp4_path else "", str(vtt_path), str(output_dir), args.category, str(m4a_path) if m4a_path else None)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 77, in process_vtt_mode
+    processed_chunks = [{'id': f'chunk_{i+1:03d}', 'text': s['text'], 'start': s['start'], 'end': s['end']}
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 77, in <listcomp>
+    processed_chunks = [{'id': f'chunk_{i+1:03d}', 'text': s['text'], 'start': s['start'], 'end': s['end']}
+TypeError: 'TranscriptSegment' object is not subscriptable
+
+2025-04-12 08:44:56,887 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: 'TranscriptSegment' object is not subscriptable
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 332, in main
+    chunks = process_vtt_mode(str(mp4_path) if mp4_path else "", str(vtt_path), str(output_dir), args.category, str(m4a_path) if m4a_path else None)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 77, in process_vtt_mode
+    processed_chunks = [{'id': f'chunk_{i+1:03d}', 'text': s['text'], 'start': s['start'], 'end': s['end']}
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 77, in <listcomp>
+    processed_chunks = [{'id': f'chunk_{i+1:03d}', 'text': s['text'], 'start': s['start'], 'end': s['end']}
+TypeError: 'TranscriptSegment' object is not subscriptable
+
+2025-04-12 08:44:57,213 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 08:44:57,213 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 08:49:13,243 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-04-12 08:49:13,669 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 08:54:51,735 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-04-12 08:54:52,039 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 08:59:24,525 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: 
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 349, in main
+    if not verify_processing(output_dir, job_id, has_video=bool(mp4_path), has_audio=bool(m4a_path)):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 171, in verify_processing
+    timestamped_dir = next(Path(output_dir).glob(f"{job_id}*"))
+StopIteration
+
+2025-04-12 08:59:24,899 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 09:03:53,459 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-04-12 09:03:53,867 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 09:10:15,513 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-04-12 09:10:15,929 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 09:27:09,752 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-04-12 09:27:10,101 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 09:28:03,515 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: Transcript file not found: output\job_20250412_092757\transcript_chunks.md
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 354, in main
+    move_to_completed(output_dir, args.category)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 276, in move_to_completed
+    raise FileNotFoundError(f"Transcript file not found: {source_file}")
+FileNotFoundError: Transcript file not found: output\job_20250412_092757\transcript_chunks.md
+
+2025-04-12 09:28:03,799 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 09:29:16,157 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: No module named 'whisper'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 354, in main
+    chunks = process_whisper_mode(str(mp4_path), str(output_dir))
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 118, in process_whisper_mode
+    import whisper
+ModuleNotFoundError: No module named 'whisper'
+
+2025-04-12 09:29:16,520 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 09:30:22,133 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: Audio extraction failed: ffmpeg version 7.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[in#0 @ 000001c0106043c0] Error opening input: No such file or directory
+Error opening input file None.
+Error opening input files: No such file or directory
+
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 354, in main
+    chunks = process_whisper_mode(str(mp4_path), str(output_dir))
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 123, in process_whisper_mode
+    audio_path = ffmpeg_audio.extract_audio(input_path, output_dir)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\utils\ffmpeg_audio.py", line 49, in extract_audio
+    raise RuntimeError(f"Audio extraction failed: {result.stderr}")
+RuntimeError: Audio extraction failed: ffmpeg version 7.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[in#0 @ 000001c0106043c0] Error opening input: No such file or directory
+Error opening input file None.
+Error opening input files: No such file or directory
+
+
+2025-04-12 09:30:22,469 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 09:34:39,752 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: Audio extraction failed: ffmpeg version 7.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[in#0 @ 0000014070954840] Error opening input: No such file or directory
+Error opening input file None.
+Error opening input files: No such file or directory
+
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 354, in main
+    chunks = process_whisper_mode(str(mp4_path), str(output_dir))
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 123, in process_whisper_mode
+    audio_path = ffmpeg_audio.extract_audio(input_path, output_dir)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\utils\ffmpeg_audio.py", line 49, in extract_audio
+    raise RuntimeError(f"Audio extraction failed: {result.stderr}")
+RuntimeError: Audio extraction failed: ffmpeg version 7.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[in#0 @ 0000014070954840] Error opening input: No such file or directory
+Error opening input file None.
+Error opening input files: No such file or directory
+
+
+2025-04-12 09:34:40,007 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 09:36:19,267 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: Audio extraction failed: ffmpeg version 7.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[in#0 @ 000001467f4e4840] Error opening input: No such file or directory
+Error opening input file None.
+Error opening input files: No such file or directory
+
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 362, in main
+    chunks = process_whisper_mode(str(mp4_path), str(output_dir))
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 123, in process_whisper_mode
+    audio_path = ffmpeg_audio.extract_audio(input_path, output_dir)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\utils\ffmpeg_audio.py", line 52, in extract_audio
+    raise RuntimeError(f"Audio extraction failed: {result.stderr}")
+RuntimeError: Audio extraction failed: ffmpeg version 7.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[in#0 @ 000001467f4e4840] Error opening input: No such file or directory
+Error opening input file None.
+Error opening input files: No such file or directory
+
+
+2025-04-12 09:36:19,564 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 09:42:43,633 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: 
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 366, in main
+    if not verify_processing(output_dir, job_id, has_video=bool(mp4_path), has_audio=bool(m4a_path)):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 180, in verify_processing
+    timestamped_dir = next(Path(output_dir).glob("*_annie"))
+StopIteration
+
+2025-04-12 09:42:43,884 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 09:50:23,133 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-04-12 09:50:23,480 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 09:56:38,292 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-04-12 09:56:38,717 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 10:07:51,434 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-04-12 10:07:51,779 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-04-12 10:13:57,295 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-04-12 10:13:57,634 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 14:38:51,349 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: VTT processing failed: No Speaker 2 segments found in VTT file
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 61, in process_vtt_mode
+    raise ValueError("No Speaker 2 segments found in VTT file")
+ValueError: No Speaker 2 segments found in VTT file
+
+2025-05-19 14:38:52,639 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 14:38:52,640 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: No Speaker 2 segments found in VTT file
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 367, in main
+    chunks = process_vtt_mode(str(mp4_path) if mp4_path else "", str(vtt_path), str(output_dir), args.category, args.email, str(m4a_path) if m4a_path else None)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 61, in process_vtt_mode
+    raise ValueError("No Speaker 2 segments found in VTT file")
+ValueError: No Speaker 2 segments found in VTT file
+
+2025-05-19 14:38:52,640 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: No Speaker 2 segments found in VTT file
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 367, in main
+    chunks = process_vtt_mode(str(mp4_path) if mp4_path else "", str(vtt_path), str(output_dir), args.category, args.email, str(m4a_path) if m4a_path else None)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 61, in process_vtt_mode
+    raise ValueError("No Speaker 2 segments found in VTT file")
+ValueError: No Speaker 2 segments found in VTT file
+
+2025-05-19 14:38:53,024 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 14:38:53,024 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 14:59:44,106 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: VTT processing failed: No Speaker 2 segments found in VTT file
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 61, in process_vtt_mode
+    raise ValueError("No Speaker 2 segments found in VTT file")
+ValueError: No Speaker 2 segments found in VTT file
+
+2025-05-19 14:59:44,570 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 14:59:44,571 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: No Speaker 2 segments found in VTT file
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 367, in main
+    chunks = process_vtt_mode(str(mp4_path) if mp4_path else "", str(vtt_path), str(output_dir), args.category, args.email, str(m4a_path) if m4a_path else None)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 61, in process_vtt_mode
+    raise ValueError("No Speaker 2 segments found in VTT file")
+ValueError: No Speaker 2 segments found in VTT file
+
+2025-05-19 14:59:44,571 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: No Speaker 2 segments found in VTT file
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 367, in main
+    chunks = process_vtt_mode(str(mp4_path) if mp4_path else "", str(vtt_path), str(output_dir), args.category, args.email, str(m4a_path) if m4a_path else None)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 61, in process_vtt_mode
+    raise ValueError("No Speaker 2 segments found in VTT file")
+ValueError: No Speaker 2 segments found in VTT file
+
+2025-05-19 14:59:44,857 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 14:59:44,857 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 15:05:48,956 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-05-19 15:05:49,399 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 15:12:48,165 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-05-19 15:12:48,693 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 15:17:46,693 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Verification failed - outputs may be incomplete
+Traceback:
+NoneType: None
+
+2025-05-19 15:17:47,000 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 15:19:30,454 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Some verification steps failed - continuing anyway
+Traceback:
+NoneType: None
+
+2025-05-19 15:19:30,883 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 15:19:30,886 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: Transcript file not found: output\job_20250519_151921\20250519_151921_interview\transcript_chunks.md
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 382, in main
+    move_to_completed(output_dir, args.category)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 296, in move_to_completed
+    raise FileNotFoundError(f"Transcript file not found: {source_file}")
+FileNotFoundError: Transcript file not found: output\job_20250519_151921\20250519_151921_interview\transcript_chunks.md
+
+2025-05-19 15:19:30,886 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: Transcript file not found: output\job_20250519_151921\20250519_151921_interview\transcript_chunks.md
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 382, in main
+    move_to_completed(output_dir, args.category)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 296, in move_to_completed
+    raise FileNotFoundError(f"Transcript file not found: {source_file}")
+FileNotFoundError: Transcript file not found: output\job_20250519_151921\20250519_151921_interview\transcript_chunks.md
+
+2025-05-19 15:19:31,052 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 15:19:31,052 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-19 15:20:32,980 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Some verification steps failed - continuing anyway
+Traceback:
+NoneType: None
+
+2025-05-19 15:20:33,341 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-20 11:35:41,121 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: VTT processing failed: No Speaker 2 segments found in VTT file
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 61, in process_vtt_mode
+    raise ValueError("No Speaker 2 segments found in VTT file")
+ValueError: No Speaker 2 segments found in VTT file
+
+2025-05-20 11:35:42,039 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-20 11:35:42,040 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: No Speaker 2 segments found in VTT file
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 390, in main
+    chunks = process_vtt_mode(str(mp4_path) if mp4_path else "", str(vtt_path), str(output_dir), args.category, args.email, str(m4a_path) if m4a_path else None)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 61, in process_vtt_mode
+    raise ValueError("No Speaker 2 segments found in VTT file")
+ValueError: No Speaker 2 segments found in VTT file
+
+2025-05-20 11:35:42,040 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Processing failed: No Speaker 2 segments found in VTT file
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 390, in main
+    chunks = process_vtt_mode(str(mp4_path) if mp4_path else "", str(vtt_path), str(output_dir), args.category, args.email, str(m4a_path) if m4a_path else None)
+  File "C:\Users\digit\CascadeProjects\self-cast-studio-app-1\transcript_builder.py", line 61, in process_vtt_mode
+    raise ValueError("No Speaker 2 segments found in VTT file")
+ValueError: No Speaker 2 segments found in VTT file
+
+2025-05-20 11:35:42,278 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-20 11:35:42,278 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}
+2025-05-20 11:40:07,249 | Transcript Builder | ERROR | Error in Transcript Builder
+Error Type: str
+Error Message: Some verification steps failed - continuing anyway
+Traceback:
+NoneType: None
+
+2025-05-20 11:40:07,637 | workflow_logger | ERROR | Failed to log error to workflow_logs: {}

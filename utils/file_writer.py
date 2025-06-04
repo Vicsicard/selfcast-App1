@@ -19,7 +19,7 @@ from .models import TranscriptSegment
 class FileWriter:
     """Handles writing all output files in the required structure."""
     
-    def __init__(self, output_dir: str, category: Optional[str] = None, job_id: Optional[str] = None):
+    def __init__(self, output_dir: str, category: Optional[str] = None, email: Optional[str] = None, job_id: Optional[str] = None):
         """Initialize FileWriter with output directory and optional job ID.
         
         Args:
@@ -30,7 +30,16 @@ class FileWriter:
         """
         self.output_dir = Path(output_dir)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        self.job_id = job_id or f"{timestamp}_{category}" if category else timestamp
+        
+        # Include email in job_id if provided
+        email_prefix = ""
+        if email:
+            # Extract username part of email (before @) for shorter paths
+            email_username = email.split('@')[0]
+            email_prefix = f"{email_username}_"
+        
+        self.job_id = job_id or f"{email_prefix}{timestamp}_{category}" if category else f"{email_prefix}{timestamp}"
+        self.email = email
         
         # Create job-specific output directory
         self.job_dir = self.output_dir / self.job_id
@@ -68,7 +77,13 @@ class FileWriter:
     def write_transcript_chunks(self, chunks: List[Union[Dict, TranscriptSegment]]) -> None:
         """Write transcript chunks to markdown file with proper formatting."""
         try:
-            output_path = self.job_dir / "transcript_chunks.md"
+            # Include email in filename if available
+            email_prefix = ""
+            if self.email:
+                email_username = self.email.split('@')[0]
+                email_prefix = f"{email_username}_"
+            
+            output_path = self.job_dir / f"{email_prefix}transcript_chunks.md"
             
             with open(output_path, "w", encoding="utf-8") as f:
                 f.write("# Speaker 2 Transcript Chunks\n\n")
@@ -94,7 +109,13 @@ class FileWriter:
     def write_chunk_metadata(self, chunks: List[Union[Dict, TranscriptSegment]]) -> None:
         """Write chunk metadata to JSON file."""
         try:
-            output_path = self.job_dir / "chunk_metadata.json"
+            # Include email in filename if available
+            email_prefix = ""
+            if self.email:
+                email_username = self.email.split('@')[0]
+                email_prefix = f"{email_username}_"
+                
+            output_path = self.job_dir / f"{email_prefix}chunk_metadata.json"
             
             metadata = []
             for i, chunk in enumerate(chunks, 1):
@@ -119,6 +140,7 @@ class FileWriter:
             with open(output_path, "w", encoding="utf-8") as f:
                 json.dump({
                     "job_id": self.job_id,
+                    "email": self.email,
                     "total_chunks": len(chunks),
                     "chunks": metadata
                 }, f, indent=2)
@@ -131,7 +153,13 @@ class FileWriter:
             
     def write_chunk_vectors(self, chunk_vectors: List[List[float]]) -> None:
         """Write chunk vectors to JSON file."""
-        output_path = self.job_dir / "chunk_vectors.json"
+        # Include email in filename if available
+        email_prefix = ""
+        if self.email:
+            email_username = self.email.split('@')[0]
+            email_prefix = f"{email_username}_"
+            
+        output_path = self.job_dir / f"{email_prefix}chunk_vectors.json"
         
         try:
             with open(output_path, "w", encoding="utf-8") as f:
@@ -158,7 +186,13 @@ class FileWriter:
         }
         """
         try:
-            output_path = self.job_dir / "video_index.json"
+            # Include email in filename if available
+            email_prefix = ""
+            if self.email:
+                email_username = self.email.split('@')[0]
+                email_prefix = f"{email_username}_"
+                
+            output_path = self.job_dir / f"{email_prefix}video_index.json"
             
             # Build index entries
             index_entries = []

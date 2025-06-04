@@ -23,11 +23,18 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+venv310/
 
 # Project specific
 output/
 *.wav
 *.mp4
+*.m4a
+*.vtt
+ffmpeg/
+ffmpeg.zip
+completed_transcripts/
+logs/
 
 # IDE
 .vscode/

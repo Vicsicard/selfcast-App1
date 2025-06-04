@@ -25,7 +25,8 @@ class VTTParser:
         """Check if speaker tag indicates Speaker 2."""
         if not speaker:
             return False
-        return "annie sicard" in speaker.lower()  # Updated to match our specific Speaker 2
+        # Only process Annie Sicard as Speaker 2
+        return "annie sicard" in speaker.lower()
         
     def _parse_timestamp(self, timestamp: str) -> float:
         """Convert VTT timestamp to seconds.
