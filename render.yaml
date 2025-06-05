@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: transcript-builder-webhook
+    env: python
+    region: oregon
+    plan: free
+    pythonVersion: 3.10.x
+    buildCommand: pip install -r requirements.txt
+    startCommand: python webhook_handler.py
+    envVars:
+      - key: MONGODB_URI
+        value: mongodb+srv://vicsicard:Z6T46srM9kEGZfLJ@cluster0.tfi0dul.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - key: MONGODB_DB
+        value: new-self-website-5-15-25
+      - key: PYTHON_VERSION
+        value: 3.10.x
+    healthCheckPath: /health
