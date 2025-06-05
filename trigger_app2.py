@@ -26,6 +26,7 @@ logger.add("logs/app2_trigger.log", rotation="1 day", level="INFO")
 
 # App 2 webhook URL (to be configured in environment)
 APP2_WEBHOOK_URL = os.environ.get('APP2_WEBHOOK_URL', 'http://localhost:5001/api/webhook/transcript')
+APP2_API_KEY = os.environ.get('APP2_API_KEY', 'default_api_key')  # API key for App 2 authentication
 
 def trigger_app2_processing(transcript_id, chunks_id):
     """Trigger App 2 processing via webhook.
@@ -75,7 +76,10 @@ def trigger_app2_processing(transcript_id, chunks_id):
         response = requests.post(
             APP2_WEBHOOK_URL,
             json=payload,
-            headers={"Content-Type": "application/json"},
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {APP2_API_KEY}"
+            },
             timeout=10
         )
         
