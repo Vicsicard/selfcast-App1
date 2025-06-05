@@ -65,6 +65,9 @@ def receive_transcript():
         user_id = data.get("user_id")
         category = data.get("category", "general")
         email = data.get("email")
+        project_code = data.get("project_code")  # Extract the 4-digit project code
+        
+        logger.info(f"Received transcript with project code: {project_code}")
         
         # Validate required fields
         if not transcript_id or not vtt_content:
@@ -102,6 +105,7 @@ def receive_transcript():
                 "user_id": user_id,
                 "category": category,
                 "email": email,
+                "project_code": project_code,  # Store the 4-digit project code
                 "created_at": datetime.now().isoformat(),
                 "status": "processed"
             }

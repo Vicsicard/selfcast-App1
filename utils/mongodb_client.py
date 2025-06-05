@@ -202,13 +202,26 @@ class MongoDBClient:
             str: MongoDB ID of processing task
         """
         try:
+            # Get transcript data to include in task
+            transcript = self.get_transcript(transcript_id)
+            
+            if not transcript:
+                logger.error(f"Cannot trigger App 2 processing: Transcript {transcript_id} not found")
+                return None
+            
             # Create processing task
             task_data = {
                 'transcript_id': transcript_id,
                 'chunks_id': chunks_id,
                 'status': 'pending',
+                'created_at': datetime.now().isoformat(),
+                'updated_at': datetime.now().isoformat(),
                 'app': 'app2',
-                'created_at': datetime.now().isoformat()
+                'metadata': {
+                    'email': transcript.get('email'),
+                    'category': transcript.get('category'),
+                    'project_code': transcript.get('project_code')  # Include the 4-digit project code
+                }
             }
             
             # Save to processing_tasks collection
